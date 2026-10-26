@@ -1,0 +1,94 @@
+{
+  "name": "dsh-peak-indicator",
+  "version": "0.2.0",
+  "description": "DeepSeek 峰谷时段、人民币 Token 费用估算与账户余额 for DSH Web / Desktop（含第三方中转站支持）",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./pricing": "./lib/pricing.js"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "peak",
+    "off-peak",
+    "pricing",
+    "cost",
+    "relay",
+    "new-api",
+    "balance"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": "0.2.1-rc.2"
+  },
+  "scripts": {
+    "build": "node scripts/sync-client-pricing.mjs",
+    "test": "node scripts/sync-client-pricing.mjs --check && node --test test/*.test.mjs"
+  },
+  "dsh": {
+    "pluginType": "client",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dsh": "0.2.1-rc.2",
+      "dshReleases": {
+        "0.2.1-rc.2": "compatible"
+      },
+      "profiles": [
+        "web",
+        "desktop"
+      ]
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-model-selection",
+        "@deepseek-ai/dsh-api-remotes"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "react": "^18.2.0",
+    "zod": "^4.4.3",
+    "@deepseek-ai/dsh-client-locale": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-chat": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-model-selection": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-client-ui-slots": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-api-remotes": "0.2.1-rc.2"
+  },
+  "devDependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "zod": "^4.4.3",
+    "@deepseek-ai/dsh-app-boot": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-compaction-basic": "0.2.1-rc.2",
+    "react-dom": "^18.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/future007s/dsh-peak-indicator.git"
+  },
+  "author": {
+    "name": "Jim",
+    "email": "future007s@outlook.com"
+  }
+}
