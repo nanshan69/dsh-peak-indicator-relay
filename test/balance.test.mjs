@@ -11,7 +11,7 @@ function fixture(read) {
   dispose(){closed=true;next?.();}
  };
  const remote={$stream:()=>stream,account:{getBalance:read}};
- const store=createBalanceStore();const stop=store.connect(remote,()=>({version:'0.2.1-rc.2',locale:'zh-CN',timezoneOffsetSeconds:28800}));
+ const store=createBalanceStore();const stop=store.connect(remote,()=>({version:'0.2.1-rc.3',locale:'zh-CN',timezoneOffsetSeconds:28800}));
  return {store,stop,frame(status){frames.push({value:{status},accept(){}});next?.();}};
 }
 test('account balance adds CNY recharge and bonus exactly, without adding USD wallets',()=>{

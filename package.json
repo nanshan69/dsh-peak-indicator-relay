@@ -1,6 +1,6 @@
 {
   "name": "dsh-peak-indicator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "DeepSeek 峰谷时段、人民币 Token 费用估算与账户余额 for DSH Web / Desktop（含第三方中转站支持）",
   "type": "module",
   "main": "lib/index.js",
@@ -30,7 +30,7 @@
   "license": "MIT",
   "engines": {
     "node": "^22.19.0 || >=24.0.0",
-    "dsh": "0.2.1-rc.2"
+    "dsh": "0.2.1-rc.3"
   },
   "scripts": {
     "build": "node scripts/sync-client-pricing.mjs",
@@ -42,9 +42,9 @@
       "patch": "./cordis.patch.yml"
     },
     "compatibility": {
-      "dsh": "0.2.1-rc.2",
+      "dsh": "0.2.1-rc.3",
       "dshReleases": {
-        "0.2.1-rc.2": "compatible"
+        "0.2.1-rc.3": "compatible"
       },
       "profiles": [
         "web",
@@ -67,20 +67,20 @@
     "@deepseek-ai/schemastery": "~3.18.5",
     "react": "^18.2.0",
     "zod": "^4.4.3",
-    "@deepseek-ai/dsh-client-locale": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-client-ui-conversation": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-client-ui-chat": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-client-ui-model-selection": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-client-ui-slots": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-api-remotes": "0.2.1-rc.2"
+    "@deepseek-ai/dsh-client-locale": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-client-ui-chat": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-client-ui-model-selection": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-session-projection": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-client-ui-slots": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-api-remotes": "0.2.1-rc.3"
   },
   "devDependencies": {
     "@deepseek-ai/schemastery": "~3.18.5",
     "zod": "^4.4.3",
-    "@deepseek-ai/dsh-app-boot": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-session": "0.2.1-rc.2",
-    "@deepseek-ai/dsh-compaction-basic": "0.2.1-rc.2",
+    "@deepseek-ai/dsh-app-boot": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-session": "0.2.1-rc.3",
+    "@deepseek-ai/dsh-compaction-basic": "0.2.1-rc.3",
     "react-dom": "^18.3.1"
   },
   "repository": {

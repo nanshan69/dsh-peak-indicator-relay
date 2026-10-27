@@ -11,7 +11,7 @@ const manifest = JSON.parse(fs.readFileSync(new URL('../package.json', import.me
 
 test('Store has an exact declaration only for the verified host, consistent with the official gate', () => {
   const releases = manifest.dsh.compatibility.dshReleases;
-  assert.deepEqual(releases, { '0.2.1-rc.2': 'compatible' });
+  assert.deepEqual(releases, { '0.2.1-rc.3': 'compatible' });
   assert.equal(manifest.dsh.compatibility.dsh, manifest.engines.dsh);
   for (const [version, status] of Object.entries(releases)) {
     if (status === 'compatible') {
@@ -20,10 +20,10 @@ test('Store has an exact declaration only for the verified host, consistent with
   }
 });
 
-test('rc.2 passes the official compatibility gate without exemptions; untested hosts are refused', () => {
-  assert.equal(evaluatePluginCompatibility(manifest, {}, '0.2.1-rc.2'), undefined);
+test('rc.3 passes the official compatibility gate without exemptions; untested hosts are refused', () => {
+  assert.equal(evaluatePluginCompatibility(manifest, {}, '0.2.1-rc.3'), undefined);
   for (const version of ['0.1.1-rc.2', '0.2.0-rc.2', '0.2.1-alpha.5', '0.2.1-rc.1', '0.2.2-rc.1']) {
-    assert.deepEqual(evaluatePluginCompatibility(manifest, {}, version).requirements, { 'engines.dsh': '0.2.1-rc.2' });
+    assert.deepEqual(evaluatePluginCompatibility(manifest, {}, version).requirements, { 'engines.dsh': '0.2.1-rc.3' });
   }
 });
 

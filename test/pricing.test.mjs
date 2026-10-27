@@ -62,6 +62,15 @@ test('unknown routes and old CNY guesses cannot contaminate a USD session total'
   assert.deepEqual(unit.wire.view(state).byModel,{});
 });
 
+test('relay tooltips do not show CNY rates as USD or fall back to official prices',()=>{
+  const t=(key,args={})=>(client.zh[key]??key).replace(/\{(\w+)\}/g,(_,name)=>args[name]??'');
+  const unavailable=client.badgeTooltip('gpt-6-astra','peak','USD',t,false,[],false);
+  assert.ok(unavailable.includes(client.zh['tip.unknown']));
+  assert.doesNotMatch(unavailable,/5\.2|26|6\.5/);
+  const cny=client.badgeTooltip('gpt-6-astra','peak','CNY',t,false,[],{input:5.2,output:26,cacheHitInput:0.52,cacheWriteInput:6.5});
+  assert.match(cny,/¥5\.2/);assert.doesNotMatch(cny,/\$|Model rate unavailable/);
+});
+
 test('Search and Fetch request metadata keeps its own billing date and does not join token cost',()=>{
   assert.equal(SEARCH_FETCH_PRICING.usdPerSuccessfulRequest,0.00075);
   assert.equal(SEARCH_FETCH_PRICING.cnyPerSuccessfulRequest,0.005);

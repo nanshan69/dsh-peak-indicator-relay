@@ -34,7 +34,7 @@ test('CNY peak, off-peak, Pro and historical V4 rates replay in their original p
 test('explicit USD remains USD and currency-specific caches cannot be accepted as the other currency',()=>{
  const cny=fold(cfg()),usd=fold(cfg({currency:'USD'}));
  assert.equal(usd.view.currency,'USD');assert.ok(Math.abs(usd.view.totalCost-1.503)<1e-12);
- assert.notEqual(cny.unit.stateVersion,usd.unit.stateVersion);
+ assert.equal(cny.unit.stateVersion,12);assert.equal(usd.unit.stateVersion,11);
  assert.equal(cny.unit.stateSchema.safeParse(usd.state).success,false);
  assert.equal(cny.unit.wire.viewSchema.safeParse(usd.view).success,false);
  assert.equal(usd.unit.stateSchema.safeParse(cny.state).success,false);
